@@ -1,12 +1,14 @@
-//De sus clientes nombre, apellido y saldo en efectivo.
 namespace Biblioteca
 {
     public class Cliente
     {
-        public int dni { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public int saldo { get; set; }
-        public Cliente
+        //De sus clientes nombre, apellido y saldo en efectivo.
+        public int Dni { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public int Saldo { get; set; }
+        public List<Cuenta> cuentas { get; set; }
+        public Cliente (int dni, string nombre, string apellido, int saldo) 
+        =>  (Dni, Nombre, Apellido, Saldo, cuentas) = (dni, nombre, apellido, saldo, new List<Cuenta>());
     }
 }
