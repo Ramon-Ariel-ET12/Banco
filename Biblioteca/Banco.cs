@@ -57,17 +57,24 @@ public class Banco
     
     public void DevolverCBU(int dni)
     {
+        bool variable = false;
         foreach (var i in clientes)
         {
             if (dni == i.Dni)
             {
                 Console.WriteLine("Su CBU es: "+ i.Cuenta.CBU);
+                variable = true;
             }
+        }
+        if(variable == false)
+        {
+            Console.WriteLine("ERROR 401");
         }
     }
 
     public void DevolverSaldo(int dni)
     {
+        bool variable = false;
         foreach (var i in clientes)
         {
             if (dni == i.Dni)
@@ -76,7 +83,12 @@ public class Banco
                 Console.WriteLine("Saldo: "+ i.Cuenta.Saldo);
                 double total = i.Efectivo + i.Cuenta.Saldo;
                 Console.WriteLine("Saldo: "+ total);
+                variable = true;
             }
+        }
+        if(variable == false)
+        {
+            Console.WriteLine("ERROR 401");
         }
     }
 
