@@ -24,10 +24,16 @@ public class Banco
             variable = true;
             }
         }
+        if(variable == false)
+        {
+            Console.WriteLine("ERROR 401");
+        }
     }
 
-    public void Debitar(int monto, int cbu)
+    public void Debitar(double monto, int cbu)
     {
+        monto = monto * 0.8;
+        bool variable = false;
         foreach (var i in clientes )
         {
             if (i.Cuenta.CBU == cbu && monto >= i.Efectivo)
@@ -36,11 +42,16 @@ public class Banco
             i.Cuenta.Saldo = monto - i.Cuenta.Saldo;
             }
         }
+        if(variable == false)
+        {
+            Console.WriteLine("ERROR 401");
+        }
     }
     #endregion
 
     //Como cada cliente solo tiene una cuenta, debe poder devolver el CBU de la misma.
-    //Tanto el cliente como la cuenta tienen que poder devolver el saldo. En el caso del cliente este se calcula como el dinero que posee en efectivo más el saldo de su cuenta.
+    //Tanto el cliente como la cuenta tienen que poder devolver el saldo. 
+    //En el caso del cliente este se calcula como el dinero que posee en efectivo más el saldo de su cuenta.
 
     #region 'consultar'
     
@@ -48,7 +59,24 @@ public class Banco
     {
         foreach (var i in clientes)
         {
-            
+            if (dni == i.Dni)
+            {
+                Console.WriteLine("Su CBU es: "+ i.Dni);
+            }
+        }
+    }
+
+    public void DevolverSaldo(int dni)
+    {
+        foreach (var i in clientes)
+        {
+            if (dni == i.Dni)
+            {
+                Console.WriteLine("Efectivo: "+ i.Efectivo);
+                Console.WriteLine("Saldo: "+ i.Cuenta.Saldo);
+                double total = i.Efectivo + i.Cuenta.Saldo;
+                Console.WriteLine("Saldo: "+ total);
+            }
         }
     }
 
