@@ -14,37 +14,28 @@ public class Banco
     public void Acreditar(double monto, int cbu)
     {
         monto = monto * 0.8;
-        bool variable = false;
+        double restante = monto * 0.2;
         foreach (var i in clientes )
         {
             if (i.Cuenta.CBU == cbu && monto >= i.Efectivo)
             {
             i.Cuenta.Saldo = monto + i.Cuenta.Saldo;
-            i.Efectivo = monto - i.Efectivo;
-            variable = true;
+            i.Efectivo = restante - i.Efectivo;
             }
-        }
-        if(variable == false)
-        {
-            Console.WriteLine("ERROR 401");
         }
     }
 
     public void Debitar(double monto, int cbu)
     {
         monto = monto * 0.8;
-        bool variable = false;
+        double restante = monto * 0.2;
         foreach (var i in clientes )
         {
             if (i.Cuenta.CBU == cbu && monto >= i.Efectivo)
             {
             i.Efectivo = monto + i.Efectivo;
-            i.Cuenta.Saldo = monto - i.Cuenta.Saldo;
+            i.Cuenta.Saldo = restante - i.Cuenta.Saldo;
             }
-        }
-        if(variable == false)
-        {
-            Console.WriteLine("ERROR 401");
         }
     }
     #endregion
@@ -55,41 +46,32 @@ public class Banco
 
     #region 'consultar'
     
-    public void DevolverCBU(int dni)
+    public int DevolverCBU(int dni)
     {
-        bool variable = false;
+        int cbu = 0;
         foreach (var i in clientes)
         {
             if (dni == i.Dni)
             {
-                Console.WriteLine("Su CBU es: "+ i.Cuenta.CBU);
-                variable = true;
+                cbu = i.Cuenta.CBU;
             }
         }
-        if(variable == false)
-        {
-            Console.WriteLine("ERROR 401");
-        }
+        return cbu;
     }
 
-    public void DevolverSaldo(int dni)
+    public double DevolverSaldo(int dni)
     {
-        bool variable = false;
+        double total = 0;
         foreach (var i in clientes)
         {
             if (dni == i.Dni)
             {
-                Console.WriteLine("Efectivo: "+ i.Efectivo);
-                Console.WriteLine("Saldo: "+ i.Cuenta.Saldo);
-                double total = i.Efectivo + i.Cuenta.Saldo;
-                Console.WriteLine("Saldo: "+ total);
-                variable = true;
+                double efectivo = i.Efectivo;
+                double saldo = i.Cuenta.Saldo;
+                total = efectivo + saldo;
             }
         }
-        if(variable == false)
-        {
-            Console.WriteLine("ERROR 401");
-        }
+        return total;
     }
 
     #endregion
