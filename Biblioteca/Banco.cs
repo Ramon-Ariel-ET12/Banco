@@ -61,7 +61,7 @@ public class Banco
         {
             if (dni == i.Dni)
             {
-                Console.WriteLine("Su CBU es: "+ i.Dni);
+                Console.WriteLine("Su CBU es: "+ i.Cuenta.CBU);
             }
         }
     }
@@ -80,6 +80,10 @@ public class Banco
         }
     }
 
+    #endregion
+
+    #region 'registrarCliente'
+    public void RegistrarCliente(Cliente cliente) => clientes.Add(cliente);
     #endregion
 
 }

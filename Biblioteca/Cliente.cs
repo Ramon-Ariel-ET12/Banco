@@ -9,4 +9,6 @@ public class Cliente
     public Cuenta Cuenta { get; set; }
     public Cliente (int dni, string nombre, string apellido, double efectivo, Cuenta cuenta) 
     =>  (Dni, Nombre, Apellido, Efectivo, Cuenta) = (dni, nombre, apellido, efectivo, cuenta);
+
+
 }
