@@ -5,8 +5,7 @@ namespace Biblioteca;
 public class Banco
 {
     public List<Cliente> clientes { get; set; }
-    public Banco () 
-    =>  clientes = new List<Cliente>();
+    public Banco () =>  clientes = new List<Cliente>();
 
     // Tanto el cliente como la cuenta pueden debitar (restar a saldo) y acreditar (sumar a su saldo) un monto determinado.
     // Tanto del cliente como de la cuenta, importa también si se le puede debitar un determinado monto.
@@ -30,7 +29,7 @@ public class Banco
                 }
                 else
                 {
-                    throw new ConstraintException("El monto ingresado es menor al efectivo que posees :v");
+                    throw new InvalidOperationException("El monto ingresado es menor al efectivo que posees :v");
                 }
             }
             else
@@ -41,7 +40,7 @@ public class Banco
         }
         if (errorcbu == true)
         {
-            throw new ConstraintException("No se ah encontrado el CBU: " + cubnoencontrado);
+            throw new InvalidOperationException("No se ah encontrado el CBU: " + cubnoencontrado);
         }
     }
 
@@ -62,13 +61,13 @@ public class Banco
                 }
                 else
                 {
-                throw new ConstraintException("El monto ingresado es menor al saldo que posees :v");
+                throw new InvalidOperationException("El monto ingresado es menor al saldo que posees :v");
                 }
             }
         }
         if (errorcbu == true)
         {
-            throw new ConstraintException("No se ah encontrado el CBU: " + cubnoencontrado);
+            throw new InvalidOperationException("No se ah encontrado el CBU: " + cubnoencontrado);
         }
     }
     #endregion
@@ -116,7 +115,7 @@ public class Banco
         {
             if (i.Dni != cliente.Dni)
             {
-                throw new ConstraintException("el DNI " + cliente.Dni + " ya está en uso");
+                throw new InvalidOperationException("el DNI " + cliente.Dni + " ya está en uso");
             }
         }
         clientes.Add(cliente);
