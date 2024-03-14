@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/et12alumno/Escritorio/Banco-1/Biblioteca/Biblioteca.csproj": {}
+    "/home/et12alumno/Escritorio/Banco/Biblioteca/Biblioteca.csproj": {}
   },
   "projects": {
-    "/home/et12alumno/Escritorio/Banco-1/Biblioteca/Biblioteca.csproj": {
+    "/home/et12alumno/Escritorio/Banco/Biblioteca/Biblioteca.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/et12alumno/Escritorio/Banco-1/Biblioteca/Biblioteca.csproj",
+        "projectUniqueName": "/home/et12alumno/Escritorio/Banco/Biblioteca/Biblioteca.csproj",
         "projectName": "Biblioteca",
-        "projectPath": "/home/et12alumno/Escritorio/Banco-1/Biblioteca/Biblioteca.csproj",
+        "projectPath": "/home/et12alumno/Escritorio/Banco/Biblioteca/Biblioteca.csproj",
         "packagesPath": "/home/et12alumno/.nuget/packages/",
-        "outputPath": "/home/et12alumno/Escritorio/Banco-1/Biblioteca/obj/",
+        "outputPath": "/home/et12alumno/Escritorio/Banco/Biblioteca/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/et12alumno/.nuget/NuGet/NuGet.Config"

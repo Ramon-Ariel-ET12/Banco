@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9KDSiIhvmDCWIgakPQ7F0n51PYePq0yC5qWSyX/ziNwuY7RyAbZ2Shlyvxq0k3UbxQknxp6IIIoQ7Jr4PIucdQ==",
+  "dgSpecHash": "t5JRXOp6CT3lm+ccrTGhUEdl3oCsjgc2ibKTKNKe7mlE7lBt65f6xmMMvNbyjFCanNkPXxCZmjCdigetRQzNTQ==",
   "success": true,
-  "projectFilePath": "/home/et12alumno/Escritorio/Banco-1/Biblioteca/Biblioteca.csproj",
+  "projectFilePath": "/home/et12alumno/Escritorio/Banco/Biblioteca/Biblioteca.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

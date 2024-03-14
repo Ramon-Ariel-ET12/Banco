@@ -1,4 +1,6 @@
-﻿namespace Biblioteca;
+﻿using System.Data;
+
+namespace Biblioteca;
 
 public class Banco
 {
@@ -14,28 +16,59 @@ public class Banco
     public void Acreditar(double monto, int cbu)
     {
         monto = monto * 0.8;
+        bool errorcbu = false;
         double restante = monto * 0.2;
+        int cubnoencontrado = 0;
         foreach (var i in clientes )
         {
-            if (i.Cuenta.CBU == cbu && monto >= i.Efectivo)
+            if (i.Cuenta.CBU == cbu)
             {
-            i.Cuenta.Saldo = monto + i.Cuenta.Saldo;
-            i.Efectivo = restante - i.Efectivo;
+                if (monto >= i.Efectivo)
+                {
+                    i.Cuenta.Saldo = monto + i.Cuenta.Saldo;
+                    i.Efectivo = restante - i.Efectivo;
+                }
+                else
+                {
+                    throw new ConstraintException("El monto ingresado es menor al efectivo que posees :v");
+                }
             }
+            else
+            {
+                errorcbu = true;
+                cubnoencontrado = i.Cuenta.CBU;
+            }
+        }
+        if (errorcbu == true)
+        {
+            throw new ConstraintException("No se ah encontrado el CBU: " + cubnoencontrado);
         }
     }
 
     public void Debitar(double monto, int cbu)
     {
+        bool errorcbu = false;
         monto = monto * 0.8;
+        int cubnoencontrado = 0;
         double restante = monto * 0.2;
         foreach (var i in clientes )
         {
-            if (i.Cuenta.CBU == cbu && monto >= i.Efectivo)
+            if (i.Cuenta.CBU == cbu)
             {
-            i.Efectivo = monto + i.Efectivo;
-            i.Cuenta.Saldo = restante - i.Cuenta.Saldo;
+                if (monto >= i.Cuenta.Saldo)
+                {
+                    i.Efectivo = monto + i.Efectivo;
+                    i.Cuenta.Saldo = restante - i.Cuenta.Saldo;
+                }
+                else
+                {
+                throw new ConstraintException("El monto ingresado es menor al saldo que posees :v");
+                }
             }
+        }
+        if (errorcbu == true)
+        {
+            throw new ConstraintException("No se ah encontrado el CBU: " + cubnoencontrado);
         }
     }
     #endregion
@@ -77,7 +110,17 @@ public class Banco
     #endregion
 
     #region 'registrarCliente'
-    public void RegistrarCliente(Cliente cliente) => clientes.Add(cliente);
+    public void RegistrarCliente(Cliente cliente)
+    {
+        foreach (var i in clientes)
+        {
+            if (i.Dni != cliente.Dni)
+            {
+                throw new ConstraintException("el DNI " + cliente.Dni + " ya está en uso");
+            }
+        }
+        clientes.Add(cliente);
+    }
     #endregion
 
 }
