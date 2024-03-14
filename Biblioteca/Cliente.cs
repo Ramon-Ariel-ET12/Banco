@@ -14,8 +14,8 @@ public class Cliente : Interface
 #region 'debitar y acreditar'
     public void Acreditar(double monto, int cbu)
     {
-        monto = monto * 0.8;
         double restante = monto * 0.2;
+        monto = monto * 0.8;
         if (monto >= Efectivo)
         {
             Cuenta.Saldo = monto + Cuenta.Saldo;
@@ -29,8 +29,8 @@ public class Cliente : Interface
 
     public void Debitar(double monto, int cbu)
     {
-        monto = monto * 0.8;
         double restante = monto * 0.2;
+        monto = monto * 0.8;
         if (monto >= Cuenta.Saldo)
         {
             Efectivo = monto + Efectivo;
@@ -59,8 +59,6 @@ public class Cliente : Interface
         return total;
     }
 #endregion
-
-
 #region 'nose'
 
     //Emergencia: Cuando un cliente tiene menos de $10.000 (en efectivo) todo incremento de dinero lo almacena en su efectivo y cada débito, primero intenta usar el saldo de su cuenta y después su efectivo.
@@ -68,7 +66,8 @@ public class Cliente : Interface
     {
         if (Efectivo < 10000)
         {
-            
+            Efectivo += incremento;
+            Cuenta.Saldo += incremento;
         }
     }
 //Cauto: Cuando el cliente tiene entre $10.000 y $50.000 en efectivo, todo incremento y disminución de dinero tiene una proporción de 80% efectivo y 20% cuenta. 
@@ -77,7 +76,8 @@ public class Cliente : Interface
     {
         if (Efectivo >= 10000 && Efectivo <= 50000)
         {
-
+            Efectivo += incremento * 0.8;
+            Cuenta.Saldo -= incremento * 0.2;
         }
     }
 //Ahorrista: Cuando el cliente posee más de $50.000 en efectivo, cada incremento de dinero va “50 y 50” entre su efectivo y su cuenta. Todos los gastos que hace el cliente, se desprenden primero de su efectivo y luego de su cuenta en casa de ser necesario.
@@ -86,7 +86,8 @@ public class Cliente : Interface
     {
         if (Efectivo > 50000)
         {
-            throw new NotImplementedException();
+            Efectivo += incremento * 0.5;
+            Cuenta.Saldo += incremento * 0.5;
         }
     }
 #endregion
