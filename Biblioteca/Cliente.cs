@@ -1,5 +1,5 @@
 namespace Biblioteca;
-public class Cliente
+public class Cliente : Interface
 {
     //De sus clientes nombre, apellido y saldo en efectivo.
     public int Dni { get; set; }
@@ -10,11 +10,8 @@ public class Cliente
     public Cliente (int dni, string nombre, string apellido, double efectivo, Cuenta cuenta) 
     =>  (Dni, Nombre, Apellido, Efectivo, Cuenta) = (dni, nombre, apellido, efectivo, cuenta);
 
-    // Tanto el cliente como la cuenta pueden debitar (restar a saldo) y acreditar (sumar a su saldo) un monto determinado.
-    // Tanto del cliente como de la cuenta, importa también si se le puede debitar un determinado monto.
-    // Cuando un cliente acredite un monto, el 80% lo almacena en efectivo y el 20% restante lo almacena en su cuenta.
-    // Cuando un cliente debite un monto, el 80% lo debita de su efectivo y el 20% restante de su cuenta.
-    #region 'debitar y acreditar'
+
+#region 'debitar y acreditar'
     public void Acreditar(double monto, int cbu)
     {
         monto = monto * 0.8;
@@ -44,13 +41,8 @@ public class Cliente
         throw new InvalidOperationException("El monto ingresado es menor al saldo que posees :v");
         }
     }
-    #endregion
-
-    //Como cada cliente solo tiene una cuenta, debe poder devolver el CBU de la misma.
-    //Tanto el cliente como la cuenta tienen que poder devolver el saldo. 
-    //En el caso del cliente este se calcula como el dinero que posee en efectivo más el saldo de su cuenta.
-
-    #region 'consultar'
+#endregion
+#region 'consultar'
     
     public int DevolverCBU(int dni)
     {
@@ -66,9 +58,36 @@ public class Cliente
         double total = efectivo + saldo;
         return total;
     }
+#endregion
 
-    #endregion
 
+#region 'nose'
 
-    //RAMA 2
+    //Emergencia: Cuando un cliente tiene menos de $10.000 (en efectivo) todo incremento de dinero lo almacena en su efectivo y cada débito, primero intenta usar el saldo de su cuenta y después su efectivo.
+    public void Emergencia(double incremento)
+    {
+        if (Efectivo < 10000)
+        {
+            
+        }
+    }
+//Cauto: Cuando el cliente tiene entre $10.000 y $50.000 en efectivo, todo incremento y disminución de dinero tiene una proporción de 80% efectivo y 20% cuenta. 
+
+    public void Cauto(double incremento)
+    {
+        if (Efectivo >= 10000 && Efectivo <= 50000)
+        {
+
+        }
+    }
+//Ahorrista: Cuando el cliente posee más de $50.000 en efectivo, cada incremento de dinero va “50 y 50” entre su efectivo y su cuenta. Todos los gastos que hace el cliente, se desprenden primero de su efectivo y luego de su cuenta en casa de ser necesario.
+
+    public void Ahorrista(double incremento)
+    {
+        if (Efectivo > 50000)
+        {
+            throw new NotImplementedException();
+        }
+    }
+#endregion
 }
