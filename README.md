@@ -1,2 +1,2 @@
 # Banco
-Trabajo para Duran
+Trabajo para el profesor Duran de progreso de redes
