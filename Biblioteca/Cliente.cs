@@ -20,7 +20,7 @@ public class Cliente
         if (monto >= Efectivo)
         {
             Cuenta.Saldo = Cuenta.Saldo + monto * 0.8;
-            Efectivo = Efectivo - restante * 0.2;
+            Efectivo = Efectivo - monto * 0.2;
         }
         else
         {
