@@ -2,6 +2,7 @@
 Trabajo para el profesor Duran de progreso de redes
 
 ```mermaid
+
 classDiagram
 direction lr
 
@@ -31,8 +32,4 @@ class Banco{
 Cuenta --* Cliente
 Banco --o Cliente
 
-class Banco
-{
-    +List~Cliente~ clientes
-}
 ```
