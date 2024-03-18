@@ -17,12 +17,10 @@ public class Cliente
     #region 'debitar y acreditar'
     public void Acreditar(double monto, int cbu)
     {
-        monto = monto * 0.8;
-        double restante = monto * 0.2;
         if (monto >= Efectivo)
         {
-            Cuenta.Saldo = monto + Cuenta.Saldo;
-            Efectivo = restante - Efectivo;
+            Cuenta.Saldo = Cuenta.Saldo + monto * 0.8;
+            Efectivo = Efectivo - restante * 0.2;
         }
         else
         {
@@ -32,12 +30,10 @@ public class Cliente
 
     public void Debitar(double monto, int cbu)
     {
-        monto = monto * 0.8;
-        double restante = monto * 0.2;
         if (monto >= Cuenta.Saldo)
         {
-            Efectivo = monto + Efectivo;
-            Cuenta.Saldo = restante - Cuenta.Saldo;
+            Efectivo = Efectivo + monto * 0.8;
+            Cuenta.Saldo = Cuenta.Saldo - monto * 0.2;
         }
         else
         {
