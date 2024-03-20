@@ -19,16 +19,12 @@ class Cliente{
 }
 
 class Cuenta{
-    -int$ _contador
+    -int _contador
     +int CBU
     +double Saldo
 }
 
-class Banco{
-    +List~Cliente~ clientes
-}
-
-class Interface{
+class IEstrategia{
     <<Interface>>
     +Emergencia(double incremento)
     +Cauto(double incremento)
@@ -36,7 +32,6 @@ class Interface{
 }
 
 Cuenta --* Cliente
-Banco --o Cliente
-Interface --o Cliente
+IEstrategia --o Cliente
 
 ```
