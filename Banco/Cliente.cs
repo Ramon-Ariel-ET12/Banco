@@ -5,6 +5,7 @@ public class Cliente
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public double Efectivo { get; set; }
+    public IEstado? Estado { get; set; }
     public Cuenta Cuenta { get; set; }
     public Cliente (int dni, string nombre, string apellido, double efectivo, Cuenta cuenta) 
     =>  (Dni, Nombre, Apellido, Efectivo, Cuenta) = (dni, nombre, apellido, efectivo, cuenta);
@@ -12,7 +13,7 @@ public class Cliente
 
 #region 'debitar y acreditar'
 
-    public void Acreditar(Cliente cliente, double monto)
+    public void Acreditar(double monto)
     {
         if (monto >= Efectivo)
         {
@@ -25,7 +26,7 @@ public class Cliente
         }
     }
 
-    public void Debitar(Cliente cliente, double monto)
+    public void Debitar(double monto)
     {
         if (monto >= Cuenta.Saldo)
         {
