@@ -1,7 +1,6 @@
 namespace Biblioteca;
-public class Cliente : IEstrategia
+public class Cliente
 {
-    //De sus clientes nombre, apellido y saldo en efectivo.
     public int Dni { get; set; }
     public string Nombre { get; set; }
     public string Apellido { get; set; }
@@ -58,15 +57,7 @@ public class Cliente : IEstrategia
 #endregion
 #region 'nose'
 
-    //Emergencia: Cuando un cliente tiene menos de $10.000 (en efectivo) todo incremento de dinero lo almacena en su efectivo y cada débito, primero intenta usar el saldo de su cuenta y después su efectivo.
-    public void Emergencia(double incremento)
-    {
-        if (Efectivo < 10000)
-        {
-            Efectivo += incremento;
-            Cuenta.Saldo += incremento;
-        }
-    }
+
 //Cauto: Cuando el cliente tiene entre $10.000 y $50.000 en efectivo, todo incremento y disminución de dinero tiene una proporción de 80% efectivo y 20% cuenta. 
 
     public void Cauto(double incremento)
