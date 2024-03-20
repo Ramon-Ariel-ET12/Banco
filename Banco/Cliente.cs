@@ -1,5 +1,5 @@
 namespace Biblioteca;
-public class Cliente : Interface
+public class Cliente : IEstrategia
 {
     //De sus clientes nombre, apellido y saldo en efectivo.
     public int Dni { get; set; }
@@ -12,7 +12,8 @@ public class Cliente : Interface
 
 
 #region 'debitar y acreditar'
-    public void Acreditar(double monto, int cbu)
+
+    public void Acreditar(Cliente cliente, double monto)
     {
         if (monto >= Efectivo)
         {
@@ -25,7 +26,7 @@ public class Cliente : Interface
         }
     }
 
-    public void Debitar(double monto, int cbu)
+    public void Debitar(Cliente cliente, double monto)
     {
         if (monto >= Cuenta.Saldo)
         {
@@ -86,5 +87,6 @@ public class Cliente : Interface
             Cuenta.Saldo += incremento * 0.5;
         }
     }
-#endregion
+
+    #endregion
 }
