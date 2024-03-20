@@ -1,4 +1,4 @@
-namespace Biblioteca;
+namespace Banco;
 public class Cliente
 {
     //De sus clientes nombre, apellido y saldo en efectivo.
