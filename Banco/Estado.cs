@@ -1,5 +1,5 @@
 namespace Banco;
-public static class Estado
+public static class Estados
 {
     private static List<IEstado> estados = new () {new Emergencia(), new Cauto(), new Ahorrista()} ;
     

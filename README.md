@@ -27,27 +27,37 @@ class Cuenta{
 class Emergencia{
     +Acreditar(Cliente cliente, double monto)
     +Debitar(Cliente cliente, double monto)
+    +PuedeUsarme(Cliente cliente) bool
 }
 
 class Cauto{
     +Acreditar(Cliente cliente, double monto)
     +Debitar(Cliente cliente, double monto)
+    +PuedeUsarme(Cliente cliente) bool
 }
 
 class Ahorrista{
     +Acreditar(Cliente cliente, double monto)
     +Debitar(Cliente cliente, double monto)
+    +PuedeUsarme(Cliente cliente) bool
 }
 
-class IEstrategia{
+class Estado{
+    <<Static>>
+    +List~IEstado~ estados
+    +AsignarEstado(Cliente cliente)
+}
+
+class IEstado{
     <<Interface>>
     +Acreditar(Cliente cliente, double monto)
     +Debitar(Cliente cliente, double monto)
+    +PuedeUsarme(Cliente cliente) bool
 }
 
 Cuenta --* Cliente
-IEstrategia --> Emergencia
-IEstrategia --> Cauto
-IEstrategia --> Ahorrista
+IEstado --> Emergencia
+IEstado --> Cauto
+IEstado --> Ahorrista
 
 ```
