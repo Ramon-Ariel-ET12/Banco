@@ -12,8 +12,8 @@ class Cliente{
     +double Efectivo
     +Cuenta Cuenta
 
-    +Acreditar(double monto, int cbu)
-    +Debitar(double monto, int cbu)
+    +Acreditar(double monto)
+    +Debitar(double monto)
     +int DevolverCBU(int dni)
     +double DevolverSaldo(int dni)
 }
@@ -24,14 +24,30 @@ class Cuenta{
     +double Saldo
 }
 
+class Emergencia{
+    +Acreditar(Cliente cliente, double monto)
+    +Debitar(Cliente cliente, double monto)
+}
+
+class Cauto{
+    +Acreditar(Cliente cliente, double monto)
+    +Debitar(Cliente cliente, double monto)
+}
+
+class Ahorrista{
+    +Acreditar(Cliente cliente, double monto)
+    +Debitar(Cliente cliente, double monto)
+}
+
 class IEstrategia{
     <<Interface>>
-    +Emergencia(double incremento)
-    +Cauto(double incremento)
-    +Ahorrista(double incremento)
+    +Acreditar(Cliente cliente, double monto)
+    +Debitar(Cliente cliente, double monto)
 }
 
 Cuenta --* Cliente
-IEstrategia --o Cliente
+IEstrategia --> Emergencia
+IEstrategia --> Cauto
+IEstrategia --> Ahorrista
 
 ```
