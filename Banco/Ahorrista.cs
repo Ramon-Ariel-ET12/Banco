@@ -1,5 +1,3 @@
-using Biblioteca;
-
 namespace Banco;
 public class Ahorrista : IEstado
 {

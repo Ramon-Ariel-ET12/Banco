@@ -1,11 +1,9 @@
-using Biblioteca;
-
 namespace Banco;
 public class Cauto : IEstado
 {
     public void Acreditar(Cliente cliente, double monto)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void Debitar(Cliente cliente, double monto)

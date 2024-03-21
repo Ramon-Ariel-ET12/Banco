@@ -1,4 +1,4 @@
-namespace Biblioteca;
+namespace Banco;
 public interface IEstado
 {
     void Acreditar(Cliente cliente, double monto);

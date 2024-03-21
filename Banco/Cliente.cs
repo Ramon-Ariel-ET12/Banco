@@ -1,4 +1,4 @@
-namespace Biblioteca;
+namespace Banco;
 public class Cliente
 {
     public int Dni { get; set; }
