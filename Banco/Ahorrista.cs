@@ -5,14 +5,14 @@ public class Ahorrista : IEstado
 
     public void Acreditar(Cliente cliente, double monto)
     {
-        cliente.Efectivo -= monto;
-        cliente.Cuenta.Saldo += monto * 0.5;
+        cliente.AcreditarEfectivo(monto * .5);
+        cliente.Cuenta.Acreditar(monto * 0.5);
     }
 
     public void Debitar(Cliente cliente, double monto)
     {
-        cliente.Efectivo += monto * 0.5;
-        cliente.Cuenta.Saldo -= monto;
+        cliente.DebitarEfectivo(monto * 0.5);
+        cliente.Cuenta.Debitar(monto * .5);
     }
 
     public bool PuedeUsarme(Cliente cliente) => cliente.Efectivo > 50000 ;

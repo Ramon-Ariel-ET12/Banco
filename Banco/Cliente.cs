@@ -10,6 +10,9 @@ public class Cliente
     public Cliente (int dni, string nombre, string apellido, double efectivo, Cuenta cuenta) 
     =>  (Dni, Nombre, Apellido, Efectivo, Cuenta) = (dni, nombre, apellido, efectivo, cuenta);
 
+    public void AcreditarEfectivo(double monto) => Efectivo += monto;
+    public void DebitarEfectivo(double monto) => Efectivo -= monto;
+
 
 #region 'debitar y acreditar'
 
@@ -45,11 +48,6 @@ public class Cliente
     }
 
     public double DevolverSaldo(int dni)
-    {
-        double efectivo = Efectivo;
-        double saldo = Cuenta.Saldo;
-        double total = efectivo + saldo;
-        return total;
-    }
+        => Efectivo + Cuenta.Saldo;
 #endregion
 }
