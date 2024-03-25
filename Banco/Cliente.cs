@@ -7,8 +7,8 @@ public class Cliente
     public double Efectivo { get; set; }
     public IEstado Estado { get; set; }
     public Cuenta Cuenta { get; set; }
-    public Cliente (int dni, string nombre, string apellido, double efectivo, Cuenta cuenta) 
-    =>  (Dni, Nombre, Apellido, Efectivo, Cuenta) = (dni, nombre, apellido, efectivo, cuenta);
+    public Cliente (int dni, string nombre, string apellido, double efectivo) 
+    =>  (Dni, Nombre, Apellido, Efectivo) = (dni, nombre, apellido, efectivo);
 
     public void AcreditarEfectivo(double monto) => Efectivo += monto;
     public void DebitarEfectivo(double monto) => Efectivo -= monto;
@@ -40,14 +40,10 @@ public class Cliente
 #endregion
 #region 'consultar'
     
-    public int DevolverCBU(int dni)
-    {
-        int cbu;
-        cbu = Cuenta.CBU;
-        return cbu;
-    }
+    public int DevolverCBU()
+        => Cuenta.CBU;
 
-    public double DevolverSaldo(int dni)
+    public double DevolverSaldo()
         => Efectivo + Cuenta.Saldo;
 #endregion
 }

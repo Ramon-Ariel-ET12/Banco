@@ -1,10 +1,17 @@
 namespace BancoTest;
-
-public class UnitTest1
+using Banco;
+public class UnitTest1 : Test
 {
     [Fact]
-    public void Test1()
+    public void RegistrarCliente()
     {
 
     }
+
+    [Fact]
+    public void TestName()
+    {
+        estado.PuedeUsarme(cliente);
+    }
+
 }
