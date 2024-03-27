@@ -8,7 +8,11 @@ public class Cliente
     public IEstado Estado { get; set; }
     public Cuenta Cuenta { get; set; }
     public Cliente (int dni, string nombre, string apellido, double efectivo) 
-    =>  (Dni, Nombre, Apellido, Efectivo) = (dni, nombre, apellido, efectivo);
+    {
+        (Dni, Nombre, Apellido, Efectivo) = (dni, nombre, apellido, efectivo);
+        Cuenta = new Cuenta(0);
+        Estados.AsignarEstado(this);
+    }  
 
     public void AcreditarEfectivo(double monto) => Efectivo += monto;
     public void DebitarEfectivo(double monto) => Efectivo -= monto;
@@ -18,11 +22,6 @@ public class Cliente
 
     public void Acreditar(double monto)
     {
-        if (monto < Efectivo)
-        {
-            throw new InvalidOperationException("El monto ingresado es menor al efectivo que posees :v");
-        }
-
         Estado.Acreditar(this, monto);
         Estados.AsignarEstado(this);
     }
