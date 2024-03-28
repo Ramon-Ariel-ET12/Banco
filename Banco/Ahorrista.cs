@@ -6,13 +6,17 @@ public class Ahorrista : IEstado
     public void Acreditar(Cliente cliente, double monto)
     {
         cliente.AcreditarEfectivo(monto * .5);
-        cliente.Cuenta.Acreditar(monto * 0.5);
+        cliente.Cuenta.AcreditarSueldo(monto * .5);
     }
 
     public void Debitar(Cliente cliente, double monto)
     {
-        cliente.DebitarEfectivo(monto * 0.5);
-        cliente.Cuenta.Debitar(monto * .5);
+        if (cliente.Efectivo < monto * .5 && cliente.Cuenta.Saldo < monto * .5)
+        {
+            throw new InvalidOperationException("El monto ingresado es mayor al saldo o el efectivo que posees (AHORRISTA) :v");
+        }
+        cliente.DebitarEfectivo(monto * .5);
+        cliente.Cuenta.DebitarSueldo(monto * .5);
     }
 
     public bool PuedeUsarme(Cliente cliente) => cliente.Efectivo > 50000 ;

@@ -28,11 +28,6 @@ public class Cliente
 
     public void Debitar(double monto)
     {
-        if (monto < Cuenta.Saldo)
-        {
-        throw new InvalidOperationException("El monto ingresado es menor al saldo que posees :v");
-        }
-
         Estado.Debitar(this, monto);
         Estados.AsignarEstado(this);
     }

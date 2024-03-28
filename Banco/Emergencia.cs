@@ -5,13 +5,17 @@ public class Emergencia : IEstado
     public void Acreditar(Cliente cliente, double monto)
     {
         cliente.AcreditarEfectivo(monto);
-        cliente.Cuenta.Acreditar(monto);
+        cliente.Cuenta.AcreditarSueldo(monto);
     }
 
     public void Debitar(Cliente cliente, double monto)
     {
+        if (cliente.Efectivo < monto && cliente.Cuenta.Saldo < monto)
+        {
+            throw new InvalidOperationException("El monto ingresado es mayor al saldo o el efectivo que posees (EMERGENCIA) :v");
+        }
         cliente.DebitarEfectivo(monto);
-        cliente.Cuenta.Debitar(monto);
+        cliente.Cuenta.DebitarSueldo(monto);
     }
 
     public bool PuedeUsarme(Cliente cliente) => cliente.Efectivo < 10000 ;

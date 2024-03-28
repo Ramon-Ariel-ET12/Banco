@@ -12,6 +12,8 @@ class Cliente{
     +double Efectivo
     +Cuenta Cuenta
 
+    +AcreditarEfectivo(double monto)
+    +DebitarEfectivo(double monto)
     +Acreditar(double monto)
     +Debitar(double monto)
     +int DevolverCBU(int dni)
@@ -22,6 +24,9 @@ class Cuenta{
     -int _contador
     +int CBU
     +double Saldo
+
+    +AcreditarSaldo(double monto) 
+    +DebitarSaldo(double monto) 
 }
 
 class Emergencia{

@@ -8,6 +8,6 @@ public class Cuenta
     public Cuenta(double saldo) 
         => (CBU, Saldo) = (++_contador, saldo);
     
-    public void Acreditar(double monto) => Saldo += monto;
-    public void Debitar(double monto) => Saldo -= monto;
+    public void AcreditarSueldo(double monto) => Saldo += monto;
+    public void DebitarSueldo(double monto) => Saldo -= monto;
 }

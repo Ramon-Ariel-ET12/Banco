@@ -28,10 +28,28 @@ public class Test
 
         neurus.Acreditar(10000);
         Assert.Equal(38000, neurus.Efectivo);
-        neurus.Cuenta.Acreditar(38000);
-        Assert.Equal(40000, neurus.Cuenta.Saldo);
+
+        Assert.Equal(2000, neurus.Cuenta.Saldo);
+       
+        neurus.Debitar(5000);
+        Assert.Equal(34000, neurus.Efectivo);
+        Assert.Equal(1000, neurus.Cuenta.Saldo);
     }
 
+//Crear a Gold Silver con $100.000 y acreditarle $100.000. Verificar que su saldo sea $200.000 con $150.000 en efectivo y $50.000 en su cuenta. Debitarle luego $30.000 y verificar que su saldo es $170.000 con $135.000 en efectivo y $35.000 en su cuenta.
+    [Fact]
+    public void GoldSilver()
+    {
+        var goldsilver = new Cliente(3, "GoldSilver", "", 100000);
+
+        goldsilver.Acreditar(100000);
+        Assert.Equal(150000, goldsilver.Efectivo);
+        Assert.Equal(50000, goldsilver.Cuenta.Saldo);
+        
+        goldsilver.Debitar(30000);
+        Assert.Equal(135000, goldsilver.Efectivo);
+        Assert.Equal(35000, goldsilver.Cuenta.Saldo);
+    }
 }
 
 
